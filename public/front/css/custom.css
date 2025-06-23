@@ -1,0 +1,125 @@
+.featured-img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: calc(0.24rem - 1px);
+    -webkit-border-radius: calc(0.24rem - 1px);
+    -moz-border-radius: calc(0.24rem - 1px);
+    -ms-border-radius: calc(0.24rem - 1px);
+    -o-border-radius: calc(0.24rem - 1px);
+}
+
+.single-img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: calc(0.24rem - 1px);
+    -webkit-border-radius: calc(0.24rem - 1px);
+    -moz-border-radius: calc(0.24rem - 1px);
+    -ms-border-radius: calc(0.24rem - 1px);
+    -o-border-radius: calc(0.24rem - 1px);
+}
+
+.post-img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: calc(0.24rem - 1px);
+    -webkit-border-radius: calc(0.24rem - 1px);
+    -moz-border-radius: calc(0.24rem - 1px);
+    -ms-border-radius: calc(0.24rem - 1px);
+    -o-border-radius: calc(0.24rem - 1px);
+}
+
+.card-height {
+    height: 280px;
+    position: relative;
+}
+
+/* Paste CSS animasi hover di sini */
+.img-hover {
+    transition: transform 0.3s cubic-bezier(.4,2,.6,.8);
+}
+.img-hover:hover {
+    transform: scale(1.07) rotate(-2deg);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+.blog-card, .featured-card {
+    transition: box-shadow 0.3s cubic-bezier(.4,2,.6,.8), transform 0.3s cubic-bezier(.4,2,.6,.8);
+}
+.blog-card:hover, .featured-card:hover {
+    box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+    transform: translateY(-6px) scale(1.02);
+    z-index: 2;
+}
+.category-badge {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.97rem;
+    border-radius: 999px;
+    padding: 0.38em 1.1em 0.38em 0.5em;
+    background: linear-gradient(90deg, #e0e7ff 60%, #f0f4fa 100%);
+    color: #3b3b6d;
+    box-shadow: 0 2px 12px rgba(80,100,200,0.07);
+    letter-spacing: 0.01em;
+    border: 1px solid #d1d5db;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, border 0.2s;
+    text-decoration: none;
+    gap: 0.5em;
+}
+.category-badge:hover {
+    background: linear-gradient(90deg, #6366f1 60%, #2563eb 100%);
+    color: #fff;
+    border: 1px solid #6366f1;
+    box-shadow: 0 6px 24px rgba(80,100,200,0.13);
+    text-decoration: none;
+}
+.category-badge i {
+    font-size: 1.1em;
+    opacity: 0.8;
+    margin-right: 0.3em;
+}
+
+/* Fix navbar positioning issue on my-articles pages */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+nav.navbar {
+    order: 0;
+    position: relative !important;
+    top: 0;
+    width: 100%;
+    z-index: 1100;
+}
+
+main, .container {
+    flex: 1 0 auto;
+}
+
+footer {
+    order: 2;
+    flex-shrink: 0;
+}
+
+/* Animated gradient background for header */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animated-gradient-header {
+    background: linear-gradient(270deg, #0a0a0a, #5c3a00, #004d00, #001a4d);
+    background-size: 800% 800%;
+    animation: gradientAnimation 15s ease infinite;
+    color: white !important;
+}
