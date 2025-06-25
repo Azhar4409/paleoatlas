@@ -103,6 +103,7 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote.min.js"></script>
 <script>
     $(document).ready(function() {
+        var content = $('#myeditor').val();
         $('#myeditor').summernote({
             height: 300,
             toolbar: [
@@ -123,6 +124,7 @@
                 }
             }
         });
+        $('#myeditor').summernote('code', content);
 
         function uploadImage(file) {
             let data = new FormData();
