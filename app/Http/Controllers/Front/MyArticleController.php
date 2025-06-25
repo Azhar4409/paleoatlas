@@ -126,14 +126,19 @@ class MyArticleController extends Controller
 
         $file = $request->file('upload');
 
-        // Resize image to max width and height 1000px (adjust as needed)
+        $descPath = storage_path('app/public/desc');
+
+        if (!file_exists($descPath)) {
+            mkdir($descPath, 0775, true);
+        }
+
         $image = \Intervention\Image\Facades\Image::make($file)->resize(1000, 1000, function ($constraint) {
             $constraint->aspectRatio();
             $constraint->upsize();
         });
 
         $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
-        $image->save(storage_path('app/public/desc/' . $fileName));
+        $image->save($descPath . '/' . $fileName);
 
         $url = asset('storage/desc/' . $fileName);
 
