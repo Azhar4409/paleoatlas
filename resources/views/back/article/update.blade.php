@@ -91,19 +91,19 @@
 
 @push('js')
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
     <script>
-        var options = {
-            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
-            filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token=',
-            clipboard_handleImages: false
-        };
-    </script>
-    <script>
-        // ckeditor
-        CKEDITOR.replace('myeditor', options);
+        $(document).ready(function() {
+            $('#myeditor').summernote({
+                height: 300,
+                callbacks: {
+                    onImageUpload: function(files) {
+                        // You can add your image upload logic here if needed
+                    }
+                }
+            });
+        });
         // preview image
         $('#img').change(function() {
             previewImage(this);
@@ -117,15 +117,5 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-        document.addEventListener("DOMContentLoaded", function() {
-            if (typeof CKEDITOR !== 'undefined') {
-                for (var instance in CKEDITOR.instances) {
-                    if (CKEDITOR.instances.hasOwnProperty(instance)) {
-                        CKEDITOR.instances[instance].config.versionCheck = false;
-                        };
-                    }
-                }
-            }
-        );
     </script>
 @endpush
