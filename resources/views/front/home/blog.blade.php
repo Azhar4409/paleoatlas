@@ -3,10 +3,6 @@
 @section('title', 'Blog - PaleoAtlas')
 
 @section('content')
-    <head>
-        <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
-    </head>
-
     <header class="py-5 bg-light border-bottom mb-4 animated-gradient-header" data-aos="fade-down">
         <div class="container">
             <div class="text-center my-5">
@@ -16,31 +12,28 @@
         </div>
     </header>
 
-    <div class="container py-4">
-        <div class="row justify-content-center">
-            <!-- Featured blog post -->
+    <div class="container">
+        <div class="row">
+            <!-- Blog entries-->
             <div class="col-lg-8">
+                <!-- Featured blog post -->
                 <div class="card mb-4 shadow-lg featured-card" data-aos="fade-up">
                     <a href="{{ url('p/'.$latest_post->slug) }}">
-                        <img class="card-img-top featured-img img-hover" src="{{ asset('storage/back/'.$latest_post->img) }}" alt="..." />
+                        <img class="card-img-top featured-img img-hover" src="{{ asset('storage/back/'.$latest_post->img) }}" alt="Gambar Artikel Terbaru" />
                     </a>
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <div class="small text-muted">
                                 <i class="bi bi-calendar"></i> {{ $latest_post->created_at->format('d M Y') }}
                                 <span class="mx-2">·</span>
-                                <span class="text-secondary"><i class="bi bi-clock"></i>
-                                    {{ ceil(str_word_count(strip_tags($latest_post->desc)) / 200) }} min read
-                                </span>
+                                <i class="bi bi-clock"></i> {{ ceil(str_word_count(strip_tags($latest_post->desc))/200) }} min read
                             </div>
                             <a href="{{ url('category/'.$latest_post->Category->slug) }}" class="category-badge">
                                 <i class="bi bi-tag"></i> {{ $latest_post->Category->name }}
                             </a>
                         </div>
                         <h2 class="card-title">{{ $latest_post->title }}</h2>
-                        <p class="card-text">
-                            {{ Str::limit(str_replace('&nbsp;', ' ', strip_tags($latest_post->desc)), 200, '...') }}
-                        </p>
+                        <p class="card-text">{{ Str::limit(strip_tags($latest_post->desc), 200, '...') }}</p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <div class="small text-muted">
                                 <i class="bi bi-person"></i> {{ $latest_post->user->name }}
@@ -51,25 +44,21 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Blog Posts Grid -->
-            <div class="col-lg-8">
+                <!-- Loop other articles -->
                 <div class="row">
-                    @forelse ($articles as $item)
-                        <div class="col-lg-6 d-flex">
-                            <div class="card mb-4 shadow-sm blog-card d-flex flex-column h-100 w-100" data-aos="zoom-in" data-aos-delay="100">
+                    @forelse($articles as $item)
+                        <div class="col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="card h-100 shadow-sm blog-card d-flex flex-column">
                                 <a href="{{ url('p/'.$item->slug) }}">
-                                    <img class="card-img-top post-img img-hover" src="{{ asset('storage/back/'.$item->img) }}" alt="..." />
+                                    <img class="card-img-top post-img img-hover" src="{{ asset('storage/back/'.$item->img) }}" alt="{{ $item->title }}" />
                                 </a>
                                 <div class="card-body d-flex flex-column">
                                     <div class="d-flex justify-content-between align-items-center mb-2">
                                         <div class="small text-muted">
                                             <i class="bi bi-calendar"></i> {{ $item->created_at->format('d M Y') }}
                                             <span class="mx-2">·</span>
-                                            <span class="text-secondary"><i class="bi bi-clock"></i>
-                                                {{ ceil(str_word_count(strip_tags($item->desc)) / 200) }} min read
-                                            </span>
+                                            <i class="bi bi-clock"></i> {{ ceil(str_word_count(strip_tags($item->desc))/200) }} min read
                                         </div>
                                         <a href="{{ url('category/'.$item->Category->slug) }}" class="category-badge">
                                             <i class="bi bi-tag"></i> {{ $item->Category->name }}
@@ -77,7 +66,7 @@
                                     </div>
                                     <h2 class="card-title h5">{{ $item->title }}</h2>
                                     <p class="card-text">{{ Str::limit(strip_tags($item->desc), 120, '...') }}</p>
-                                    <div class="d-flex justify-content-between align-items-center mt-auto">
+                                    <div class="mt-auto d-flex justify-content-between align-items-center">
                                         <div class="small text-muted">
                                             <i class="bi bi-person"></i> {{ $item->user->name }}
                                             <span class="mx-2">·</span>
@@ -89,15 +78,18 @@
                             </div>
                         </div>
                     @empty
-                        <h3 class="text-center">Artikel tidak ditemukan.</h3>
+                        <p class="text-muted">Tidak ada artikel ditemukan.</p>
                     @endforelse
                 </div>
-            </div>
-        </div>
 
-        <!-- Pagination -->
-        <div class="pagination justify-content-center my-4" data-aos="fade-up" data-aos-delay="200">
-            {{ $articles->links() }}
+                <!-- Pagination -->
+                <div class="pagination justify-content-center my-4" data-aos="fade-up" data-aos-delay="200">
+                    {{ $articles->links() }}
+                </div>
+            </div>
+
+            <!-- Side widgets -->
+            @include('front.layout.side-widget')
         </div>
     </div>
 @endsection
