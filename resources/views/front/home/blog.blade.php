@@ -17,9 +17,8 @@
     </header>
     <div class="container py-4">
         <div class="row">
-            <!-- Blog entries-->
+            <!-- Featured blog post-->
             <div class="col-lg-8">
-                <!-- Featured blog post-->
                 <div class="card mb-4 shadow-lg featured-card" data-aos="fade-up">
                     <a href="{{ url('p/'.$latest_post->slug) }}">
                         <img class="card-img-top featured-img img-hover" src="{{ asset('storage/back/'.$latest_post->img) }}" alt="..." />
@@ -47,50 +46,48 @@
                         <a class="btn btn-outline-primary btn-sm" href="{{ url('p/'.$latest_post->slug) }}">Read more →</a>
                     </div>
                 </div>
-
-                </div>
-                <!-- Nested row for non-featured blog posts-->
+            </div>
+            <!-- Nested row for non-featured blog posts-->
+            <div class="col-lg-8">
                 <div class="row">
-                    @foreach($articles as $item)
-                    <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="100">
-                        <!-- Blog post-->
-                        <div class="card mb-4 shadow-sm blog-card">
-                            <a href="{{ url('p/'.$item->slug) }}">
-                                <img class="card-img-top post-img img-hover" src="{{ asset('storage/back/'.$item->img) }}" alt="..." />
-                            </a>
-                            <div class="card-body card-height d-flex flex-column">
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <div class="small text-muted">
-                                        <i class="bi bi-calendar"></i> {{ $item->created_at->format('d M Y') }}
-                                        <span class="mx-2">·</span>
-                                        <span class="text-secondary"><i class="bi bi-clock"></i> {{ ceil(str_word_count(strip_tags($item->desc))/200) }} min read</span>
+                    @forelse ($articles as $item)
+                        <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="card mb-4 shadow-sm blog-card">
+                                <a href="{{ url('p/'.$item->slug) }}">
+                                    <img class="card-img-top post-img img-hover" src="{{ asset('storage/back/'.$item->img) }}" alt="..." />
+                                </a>
+                                <div class="card-body card-height d-flex flex-column">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="small text-muted">
+                                            <i class="bi bi-calendar"></i> {{ $item->created_at->format('d M Y') }}
+                                            <span class="mx-2">·</span>
+                                            <span class="text-secondary"><i class="bi bi-clock"></i> {{ ceil(str_word_count(strip_tags($item->desc))/200) }} min read</span>
+                                        </div>
+                                        <a href="{{ url('category/'.$item->Category->slug) }}" class="category-badge">
+                                            <i class="bi bi-tag"></i> {{ $item->Category->name }}
+                                        </a>
                                     </div>
-                                    <a href="{{ url('category/'.$item->Category->slug) }}" class="category-badge">
-                                        <i class="bi bi-tag"></i> {{ $item->Category->name }}
-                                    </a>
-                                </div>
-                                <h2 class="card-title h5">{{ $item->title }}</h2>
-                                <p class="card-text">{{ Str::limit(strip_tags($item->desc), 120, '...') }}</p>
-                                <div class="d-flex justify-content-between align-items-center mt-3">
-                                    <div class="small text-muted">
-                                        <i class="bi bi-person"></i> {{ $item->user->name }}
-                                        <span class="mx-2">·</span>
-                                        <i class="bi bi-chat-dots"></i> {{ $item->comments_count ?? 0 }} comments
+                                    <h2 class="card-title h5">{{ $item->title }}</h2>
+                                    <p class="card-text">{{ Str::limit(strip_tags($item->desc), 120, '...') }}</p>
+                                    <div class="d-flex justify-content-between align-items-center mt-3">
+                                        <div class="small text-muted">
+                                            <i class="bi bi-person"></i> {{ $item->user->name }}
+                                            <span class="mx-2">·</span>
+                                            <i class="bi bi-chat-dots"></i> {{ $item->comments_count ?? 0 }} comments
+                                        </div>
+                                        <a class="btn btn-outline-primary btn-sm mt-auto" href="{{ url('p/'.$item->slug) }}">Read more →</a>
                                     </div>
-                                <a class="btn btn-outline-primary btn-sm mt-auto" href="{{ url('p/'.$item->slug) }}">Read more →</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    @endforeach
-                </div>
-                <!-- Pagination-->
-                <div class="pagination justify-content-center my-4" data-aos="fade-up" data-aos-delay="200">
-                    {{ $articles->links() }}
+                    @empty
+                        <h3>Not Found</h3>
+                    @endforelse
                 </div>
             </div>
-            <!-- Side widgets-->
-            @include('front.layout.side-widget')
+        </div>
+        <div class="pagination justify-content-center my-4" data-aos="fade-up" data-aos-delay="200">
+            {{ $articles->links() }}
         </div>
     </div>
 @endsection
