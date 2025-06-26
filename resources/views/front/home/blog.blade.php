@@ -56,7 +56,7 @@
                 <!-- Other Articles -->
                 <div class="row">
                     @foreach($articles as $item)
-                        <div class="col-lg-6 col-md-6 col-12 mb-4" data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 }}">
+                        <div class="col-lg-6 col-md-6 col-12 mb-6" data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 }}">
                             <div class="card h-100 shadow-sm border-0">
                                 <div class="overflow-hidden">
                                     <a href="{{ url('p/'.$item->slug) }}">
