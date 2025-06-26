@@ -150,7 +150,7 @@
                                             <form id="delete-comment-form-{{ $comment->id }}" action="{{ route('front.article.comment.delete', $comment->id) }}" method="POST" style="display:none;">
                                                 @csrf
                                             </form>
-                                            <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $comment->id }})">Hapus</button>
+                                            <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $comment->id }})">🗑️</button>
                                             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                                             <script>
                                                 function confirmDelete(commentId) {

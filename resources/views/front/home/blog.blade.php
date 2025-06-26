@@ -15,7 +15,7 @@
             </div>
         </div>
     </header>
-    <div class="container">
+    <div class="container py-4">
         <div class="row">
             <!-- Blog entries-->
             <div class="col-lg-8">
