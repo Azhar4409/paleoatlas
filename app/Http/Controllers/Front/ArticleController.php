@@ -59,4 +59,17 @@ class ArticleController extends Controller
 
         return redirect()->route('front.article.show', $slug)->with('success', 'Comment added successfully.');
     }
+
+    public function deleteComment($commentId)
+    {
+        $comment = \App\Models\Comment::findOrFail($commentId);
+
+        if ($comment->user_id !== Auth::id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $comment->delete();
+
+        return redirect()->back()->with('success', 'Komentar berhasil dihapus.');
+    }
 }

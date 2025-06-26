@@ -141,10 +141,18 @@
                             @forelse ($comments as $comment)
                                 <div class="mb-3 border rounded p-3 d-flex align-items-start gap-3">
                                     <img src="{{ $comment->user->profile_photo_url }}" alt="{{ $comment->user->name }}" class="rounded-circle" style="width:40px; height:40px; object-fit:cover;">
-                                    <div>
+                                    <div class="flex-grow-1">
                                         <strong>{{ $comment->user->name }}</strong> <small class="text-muted">{{ $comment->created_at->diffForHumans() }}</small>
                                         <p>{{ $comment->comment_text }}</p>
                                     </div>
+                                    @auth
+                                        @if(Auth::id() === $comment->user_id)
+                                            <form action="{{ route('front.article.comment.delete', $comment->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus komentar ini?');">
+                                                @csrf
+                                                <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                            </form>
+                                        @endif
+                                    @endauth
                                 </div>
                             @empty
                                 <p>No comments yet.</p>

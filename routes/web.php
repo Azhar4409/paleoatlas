@@ -29,6 +29,7 @@ Route::post('/contact', [HomeController::class, 'contactSend'])->name('contact.s
 
 Route::get('/p/{slug}', [FrontArticleController::class, 'show'])->name('front.article.show');
 Route::post('/p/{slug}/comment', [FrontArticleController::class, 'storeComment'])->middleware('auth')->name('front.article.comment.store');
+Route::post('/p/comment/{commentId}/delete', [FrontArticleController::class, 'deleteComment'])->middleware('auth')->name('front.article.comment.delete');
 Route::get('/articles', [FrontArticleController::class, 'index']);
 Route::post('/articles/search', [FrontArticleController::class, 'index'])->name('search');
 
@@ -48,7 +49,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/my-articles/upload-image', [MyArticleController::class, 'uploadImage'])->name('my-articles.upload-image');
 
-    Route::post('/my-articles/delete-orphaned-comments', [MyArticleController::class, 'deleteOrphanedComments'])->name('my-articles.delete-orphaned-comments');
+    // Route::post('/my-articles/delete-orphaned-comments', [MyArticleController::class, 'deleteOrphanedComments'])->name('my-articles.delete-orphaned-comments');
 
     // Remove or comment out the conflicting 'article' resource route for MyArticleController
     // Route::resource('article', MyArticleController::class);
