@@ -7,7 +7,7 @@
     <head>
         <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     </head>
-    <header class="py-5 bg-light border-bottom mb-4" data-aos="fade-down">
+    <header class="py-5 bg-light border-bottom mb-4 animated-gradient-header" data-aos="fade-down">
         <div class="container">
             <div class="text-center my-5">
                 <h1 class="fw-bolder">Welcome to Paleo Atlas Blog!</h1>
@@ -32,21 +32,22 @@
                                 <span class="text-secondary"><i class="bi bi-clock"></i> {{ ceil(str_word_count(strip_tags($latest_post->desc))/200) }} min read
                                 </span>
                             </div>
-                            <<a href="{{ url('category/'.$latest_post->Category->slug) }}" class="category-badge">
+                            <a href="{{ url('category/'.$latest_post->Category->slug) }}" class="category-badge">
                                 <i class="bi bi-tag"></i> {{ $latest_post->Category->name }}
                             </a>
                         </div>
                         <h2 class="card-title">{{ $latest_post->title }}</h2>
-                        <p class="card-text">{{ Str::limit(strip_tags($latest_post->desc), 200, '...') }}</p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <div class="small text-muted">
-                                <i class="bi bi-person"></i> {{ $latest_post->user->name }}
-                                <span class="mx-2">·</span>
-                                <i class="bi bi-chat-dots"></i> {{ $latest_post->comments_count ?? 0 }} comments
-                            </div>
-                            <a class="btn btn-outline-primary btn-sm" href="{{ url('p/'.$latest_post->slug) }}">Read more →</a>
+                        <p class="card-text">{{ Str::limit(str_replace('&nbsp;', ' ', strip_tags($latest_post->desc)), 200, '...') }}</p>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <div class="small text-muted">
+                            <i class="bi bi-person"></i> {{ $latest_post->user->name }}
+                            <span class="mx-2">·</span>
+                            <i class="bi bi-chat-dots"></i> {{ $latest_post->comments_count ?? 0 }} comments
                         </div>
+                        <a class="btn btn-outline-primary btn-sm" href="{{ url('p/'.$latest_post->slug) }}">Read more →</a>
                     </div>
+                </div>
+
                 </div>
                 <!-- Nested row for non-featured blog posts-->
                 <div class="row">
