@@ -12,27 +12,27 @@
         </div>
     </header>
 
-    <div class="container">
+    <div class="container py-4">
         <div class="row">
-            <!-- Blog entries-->
+            <!-- Blog content area -->
             <div class="col-lg-8">
                 <!-- Featured blog post -->
                 <div class="card mb-4 shadow-lg featured-card" data-aos="fade-up">
                     <a href="{{ url('p/'.$latest_post->slug) }}">
-                        <img class="card-img-top featured-img img-hover" src="{{ asset('storage/back/'.$latest_post->img) }}" alt="Gambar Artikel Terbaru" />
+                        <img class="card-img-top featured-img img-hover rounded-top" src="{{ asset('storage/back/'.$latest_post->img) }}" alt="{{ $latest_post->title }}" />
                     </a>
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <div class="small text-muted">
                                 <i class="bi bi-calendar"></i> {{ $latest_post->created_at->format('d M Y') }}
                                 <span class="mx-2">·</span>
-                                <i class="bi bi-clock"></i> {{ ceil(str_word_count(strip_tags($latest_post->desc))/200) }} min read
+                                <i class="bi bi-clock"></i> {{ ceil(str_word_count(strip_tags($latest_post->desc)) / 200) }} min read
                             </div>
                             <a href="{{ url('category/'.$latest_post->Category->slug) }}" class="category-badge">
                                 <i class="bi bi-tag"></i> {{ $latest_post->Category->name }}
                             </a>
                         </div>
-                        <h2 class="card-title">{{ $latest_post->title }}</h2>
+                        <h2 class="card-title h4">{{ $latest_post->title }}</h2>
                         <p class="card-text">{{ Str::limit(strip_tags($latest_post->desc), 200, '...') }}</p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <div class="small text-muted">
@@ -45,14 +45,16 @@
                     </div>
                 </div>
 
-                <!-- Loop other articles -->
+                <!-- Grid of articles -->
                 <div class="row">
-                    @forelse($articles as $item)
-                        <div class="col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="100">
-                            <div class="card h-100 shadow-sm blog-card d-flex flex-column">
-                                <a href="{{ url('p/'.$item->slug) }}">
-                                    <img class="card-img-top post-img img-hover" src="{{ asset('storage/back/'.$item->img) }}" alt="{{ $item->title }}" />
-                                </a>
+                    @foreach($articles as $item)
+                        <div class="col-lg-6 col-md-6 col-12 mb-4" data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 }}">
+                            <div class="card h-100 shadow-sm blog-card border-0">
+                                <div class="overflow-hidden">
+                                    <a href="{{ url('p/'.$item->slug) }}">
+                                        <img class="card-img-top post-img rounded-top img-hover" src="{{ asset('storage/back/'.$item->img) }}" alt="{{ $item->title }}" style="max-height: 220px; object-fit: cover; width: 100%;">
+                                    </a>
+                                </div>
                                 <div class="card-body d-flex flex-column">
                                     <div class="d-flex justify-content-between align-items-center mb-2">
                                         <div class="small text-muted">
@@ -64,9 +66,11 @@
                                             <i class="bi bi-tag"></i> {{ $item->Category->name }}
                                         </a>
                                     </div>
-                                    <h2 class="card-title h5">{{ $item->title }}</h2>
-                                    <p class="card-text">{{ Str::limit(strip_tags($item->desc), 90, '...') }}</p>
-                                    <div class="mt-auto d-flex justify-content-between align-items-center">
+                                    <h2 class="card-title h5">
+                                        <a href="{{ url('p/'.$item->slug) }}" class="text-decoration-none text-dark">{{ $item->title }}</a>
+                                    </h2>
+                                    <p class="card-text flex-grow-1">{{ Str::limit(strip_tags($item->desc), 120, '...') }}</p>
+                                    <div class="d-flex justify-content-between align-items-center mt-3">
                                         <div class="small text-muted">
                                             <i class="bi bi-person"></i> {{ $item->user->name }}
                                             <span class="mx-2">·</span>
@@ -77,9 +81,7 @@
                                 </div>
                             </div>
                         </div>
-                    @empty
-                        <p class="text-muted">Tidak ada artikel ditemukan.</p>
-                    @endforelse
+                    @endforeach
                 </div>
 
                 <!-- Pagination -->
@@ -88,7 +90,7 @@
                 </div>
             </div>
 
-            <!-- Side widgets -->
+            <!-- Sidebar -->
             @include('front.layout.side-widget')
         </div>
     </div>
