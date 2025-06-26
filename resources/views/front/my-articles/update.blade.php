@@ -91,6 +91,11 @@
             <a href="{{ route('my-articles.index') }}" class="btn btn-secondary">Batal</a>
         </div>
     </form>
+
+    <form action="{{ route('my-articles.delete-orphaned-comments') }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus komentar tanpa user?');" class="mt-3">
+        @csrf
+        <button type="submit" class="btn btn-danger">Hapus Komentar Tanpa User</button>
+    </form>
 </div>
 @endsection
 

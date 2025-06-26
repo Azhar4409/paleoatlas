@@ -48,6 +48,8 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/my-articles/upload-image', [MyArticleController::class, 'uploadImage'])->name('my-articles.upload-image');
 
+    Route::post('/my-articles/delete-orphaned-comments', [MyArticleController::class, 'deleteOrphanedComments'])->name('my-articles.delete-orphaned-comments');
+
     // Remove or comment out the conflicting 'article' resource route for MyArticleController
     // Route::resource('article', MyArticleController::class);
 });

@@ -19,6 +19,24 @@ class MyArticleController extends Controller
         return view('front.my-articles.index', compact('articles'));
     }
 
+    /**
+     * Delete comments for users whose comments are missing (orphaned comments).
+     */
+    public function deleteOrphanedComments()
+    {
+        // Find comments where the user does not exist
+        $orphanedComments = \App\Models\Comment::doesntHave('user')->get();
+
+        $count = $orphanedComments->count();
+
+        if ($count > 0) {
+            // Delete the orphaned comments
+            \App\Models\Comment::whereIn('id', $orphanedComments->pluck('id'))->delete();
+        }
+
+        return redirect()->back()->with('success', "$count komentar tanpa user berhasil dihapus.");
+    }
+
     public function create()
     {
         $categories = Category::all();
