@@ -1,66 +1,9 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h1>Menelusuri Jejak Bumi Lewat PaleoAtlas</h1>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Pernahkah kamu membayangkan bagaimana bentuk Bumi 500 juta tahun yang lalu? Atau di mana posisi benua saat dinosaurus pertama kali muncul? Inilah pertanyaan-pertanyaan yang dijawab oleh PaleoAtlas, sebuah situs interaktif yang memetakan perjalanan geologis planet kita dari masa kini hingga ratusan juta tahun ke belakang.
 
-## About Laravel
+PaleoAtlas bukan sekadar peta biasa. Ia adalah hasil kolaborasi ilmiah dari proyek PALEOMAP yang memadukan data geologi, paleomagnetik, dan model tektonik untuk merekonstruksi wajah Bumi dari era Neoproterozoikum sampai zaman modern. Melalui antarmuka sederhana, kita bisa menggeser slider waktu untuk melihat bagaimana benua terpisah, samudra terbentuk, dan daratan naik-turun seiring pergeseran lempeng.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Selain sebagai alat visualisasi, situs ini juga menyediakan file-file penting bagi yang ingin meneliti lebih lanjut. Mulai dari gambar peta resolusi tinggi, data shapefile, hingga file khusus GPlates yang bisa dianalisis ulang secara ilmiah. Bahkan ada alat bernama PaleoDataPlotter yang memungkinkan pengguna menambahkan titik data seperti lokasi fosil atau arah arus laut ke peta mereka sendiri.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Sebagai seorang pencinta sejarah alam, aku merasa situs seperti PaleoAtlas ini bukan hanya alat bantu belajar—ia adalah jendela waktu. Kita diajak untuk menyusuri jejak-jejak kehidupan purba, bukan lewat fosil saja, tapi juga melalui perubahan rupa bumi itu sendiri. Bagi siapa pun yang ingin mengaitkan masa lalu geologis dengan cerita-cerita kehidupan, PaleoAtlas adalah sumber inspirasi yang patut dijelajahi.
