@@ -65,7 +65,7 @@
                                         </a>
                                     </div>
                                     <h2 class="card-title h5">{{ $item->title }}</h2>
-                                    <p class="card-text">{{ Str::limit(strip_tags($item->desc), 120, '...') }}</p>
+                                    <p class="card-text">{{ Str::limit(strip_tags($item->desc), 90, '...') }}</p>
                                     <div class="mt-auto d-flex justify-content-between align-items-center">
                                         <div class="small text-muted">
                                             <i class="bi bi-person"></i> {{ $item->user->name }}
