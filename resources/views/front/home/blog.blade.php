@@ -58,7 +58,7 @@
                             <a href="{{ url('p/'.$item->slug) }}">
                                 <img class="card-img-top post-img img-hover" src="{{ asset('storage/back/'.$item->img) }}" alt="..." />
                             </a>
-                            <div class="card-body card-height">
+                            <div class="card-body card-height d-flex flex-column">
                                 <div class="d-flex justify-content-between align-items-center mb-2">
                                     <div class="small text-muted">
                                         <i class="bi bi-calendar"></i> {{ $item->created_at->format('d M Y') }}
@@ -77,7 +77,7 @@
                                         <span class="mx-2">·</span>
                                         <i class="bi bi-chat-dots"></i> {{ $item->comments_count ?? 0 }} comments
                                     </div>
-                                    <a class="btn btn-outline-primary btn-sm" href="{{ url('p/'.$item->slug) }}">Read more →</a>
+                                <a class="btn btn-outline-primary btn-sm mt-auto" href="{{ url('p/'.$item->slug) }}">Read more →</a>
                                 </div>
                             </div>
                         </div>
